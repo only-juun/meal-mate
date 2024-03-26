@@ -4,5 +4,5 @@ import org.springframework.stereotype.Service
 
 @Service
 interface UserLoadUseCase {
-    fun loadUserName(userId: Long)
+    fun loadUserName(userId: Long): String
 }

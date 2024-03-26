@@ -27,7 +27,7 @@ class RoomLoadController(
         ResponseEntity
             .status(HttpStatus.OK)
             .body(
-                roomLoadUseCase.findAllRooms(pageable)
+                BaseResponse(roomLoadUseCase.findAllRooms(pageable))
             )
 
     /**
@@ -40,7 +40,7 @@ class RoomLoadController(
         ResponseEntity
             .status(HttpStatus.OK)
             .body(
-                roomLoadUseCase.findRoomDetails(roomId)
+                BaseResponse(roomLoadUseCase.findRoomDetails(roomId))
             )
 
     /**

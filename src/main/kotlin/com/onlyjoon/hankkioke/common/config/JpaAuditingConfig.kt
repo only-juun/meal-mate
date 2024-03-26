@@ -1,4 +1,4 @@
-package com.onlyjoon.hankkioke.common
+package com.onlyjoon.hankkioke.common.config
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing

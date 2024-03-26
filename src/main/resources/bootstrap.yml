@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      uri: http://219.241.3.105:8888
+      name: meal
+      profile: local

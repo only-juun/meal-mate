@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service
 
 @Service
 interface RoomCreateUseCase {
-    fun createRoom(roomCreateCommand: RoomCreateCommand)
+    fun createRoom(roomCreateCommand: RoomCreateCommand): String
 }

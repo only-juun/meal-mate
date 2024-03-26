@@ -23,7 +23,7 @@ class RoomParticipateController(
         @PathVariable("userId") userId: Long?,
     ) =
         ResponseEntity
-            .status(HttpStatus.NO_CONTENT)
+            .status(HttpStatus.OK)
             .body(
                 BaseResponse(roomParticipateUseCase.participateRoom(userId, roomId))
             )
