@@ -12,7 +12,6 @@ class JwtUtil {
         .encodeToString("930x2i9nb09684s5nm9iq246mo670o2".toByteArray())
 
     fun generateToken(loginId: String) : String {
-        // 토큰 유효기간을 1일 설정
         val tokenPeriod = 1000L * 60L * 60L * 24L
 
         val claims = Jwts.claims().setSubject(loginId)
@@ -29,6 +28,8 @@ class JwtUtil {
     }
 
     fun verifyToken(token: String) =
+        // exception filter를 빼고 전역 처리를 할 방법을 찾아보기
+        // db에 조회하지 않고, 인증이 한번 되었다면 캐싱 처리 해보는 건 어떤지
         try {
             Jwts.parserBuilder()
                 .setSigningKey(Keys.hmacShaKeyFor(secretKey.toByteArray()))
@@ -48,7 +49,9 @@ class JwtUtil {
             .body.subject
 
     fun extractRole(token: String) =
-        Jwts.parserBuilder().setSigningKey(secretKey.toByteArray())
+        Jwts.parserBuilder()
+            .setSigningKey(Keys.hmacShaKeyFor(secretKey.toByteArray()))
             .build()
-            .parseClaimsJws(token).body["role"]
+            .parseClaimsJws(token)
+            .body["role"]
 }

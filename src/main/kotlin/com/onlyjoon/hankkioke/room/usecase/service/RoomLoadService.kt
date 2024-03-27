@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service
 
 @Service
 class RoomLoadService : RoomLoadUseCase {
-    override fun findAllRooms(pageable: Pageable?) = "allRooms"
-    override fun findRoomDetails(roomId: Long?) = "roomDetails"
+    override fun findAllRooms(pageable: Pageable) = "allRooms"
+    override fun findRoomDetails(roomId: Long) = "roomDetails"
     override fun getAttendeeList(roomId: Long) = "attendeeList"
 
 }

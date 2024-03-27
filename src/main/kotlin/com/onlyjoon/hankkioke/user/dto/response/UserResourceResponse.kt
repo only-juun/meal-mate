@@ -16,7 +16,8 @@ data class UserResourceResponse(
     @JsonProperty("given_name")
     val givenName: String,
 
-    @JsonProperty("family_name")    val familyName: String
+    @JsonProperty("family_name")
+    val familyName: String
 
 ) {
     fun toUser() =  User(

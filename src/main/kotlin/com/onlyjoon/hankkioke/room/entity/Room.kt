@@ -3,8 +3,6 @@ package com.onlyjoon.hankkioke.room.entity
 import com.onlyjoon.hankkioke.common.entity.BaseTime
 import com.onlyjoon.hankkioke.user.entity.User
 import jakarta.persistence.*
-import jakarta.validation.constraints.Max
-import jakarta.validation.constraints.Min
 import java.time.LocalDateTime
 
 @Entity
@@ -21,8 +19,6 @@ data class Room (
     var description: String,
 
     @Column(nullable = false)
-    @Min(value = 2)
-    @Max(value = 8)
     var maxAttendees: Int,
 
     @Column(nullable = false)
