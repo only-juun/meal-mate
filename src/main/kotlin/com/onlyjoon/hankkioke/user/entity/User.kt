@@ -24,8 +24,8 @@ data class User(
     @Column(length = 30, nullable = true)
     var deletedAt: LocalDateTime? = null,
 
-    @JoinColumn(name = "ROOM_ID")
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ROOM_ID")
     var room: Room? = null
 
 ) : BaseTime()

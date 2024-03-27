@@ -3,6 +3,8 @@ package com.onlyjoon.hankkioke.room.entity
 import com.onlyjoon.hankkioke.common.entity.BaseTime
 import com.onlyjoon.hankkioke.user.entity.User
 import jakarta.persistence.*
+import jakarta.validation.constraints.Max
+import jakarta.validation.constraints.Min
 import java.time.LocalDateTime
 
 @Entity
@@ -13,37 +15,46 @@ data class Room (
     var id: Long? = null,
 
     @Column(nullable = false, length = 20)
-    var title: String? = null,
+    var title: String,
 
     @Column(nullable = false)
-    var description: String? = null,
+    var description: String,
 
     @Column(nullable = false)
-    var limitedAttendees: Int? = null,
+    @Min(value = 2)
+    @Max(value = 8)
+    var maxAttendees: Int,
 
     @Column(nullable = false)
-    var mealTime: LocalDateTime? = null,
+    var mealTime: LocalDateTime,
 
     @Column(nullable = false, length = 60)
-    var restaurantName: String? = null,
+    var restaurantName: String?,
 
     @Column(nullable = false)
-    var restaurantLocation: String? = null,
+    @Enumerated(EnumType.STRING)
+    var category: Category,
+
+    @Column(nullable = false)
+    var restaurantLocation: String,
 
     @Column(nullable = false, length = 30)
-    var restaurantCategory: String? = null,
+    var restaurantCategory: String,
 
     @Column(nullable = false, length = 30)
-    var restaurantLatitude: Double? = null,
+    var restaurantLatitude: Double,
 
     @Column(nullable = false, length = 30)
-    var restaurantLongitude: Double? = null,
+    var restaurantLongitude: Double,
 
     @Column(nullable = false, length = 30)
-    var locationUrl: String? = null,
+    var locationUrl: String,
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = true)
     var deletedAt: LocalDateTime? = null,
+
+    @Column(nullable = true)
+    var closedAt: LocalDateTime? = null,
 
     @OneToMany(mappedBy = "room")
     val users: List<User> = mutableListOf(),
