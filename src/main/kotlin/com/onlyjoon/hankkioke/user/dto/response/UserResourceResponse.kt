@@ -23,6 +23,6 @@ data class UserResourceResponse(
     fun toUser() =  User(
         email = email,
         name = name,
-        image = picture,
+        image = picture
     )
 }

@@ -9,9 +9,9 @@ import java.util.*
 class JwtUtil {
 
     private val secretKey = Base64.getEncoder()
-        .encodeToString("930x2i9nb09684s5nm9iq246mo670o2".toByteArray())
+        .encodeToString("ea3d4174364c68a0d4fe8aaef8bd762211cf04f74b263f6a15cd38f1d461799222f4a36c070f2eafeac20b4932f43827f25b1395bdfe7421089b21a837d40ca7".toByteArray())
 
-    fun generateToken(loginId: String) : String {
+    fun generateToken(loginId: String): String {
         val tokenPeriod = 1000L * 60L * 60L * 24L
 
         val claims = Jwts.claims().setSubject(loginId)

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Service
 @Service
 class UserLoadService : UserLoadUseCase {
     override fun loadUserName(userId: Long) = "load user"
+    override fun loadUserByEmail(email: String) = "hj.nam@okestro.com"
 }
