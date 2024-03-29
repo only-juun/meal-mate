@@ -28,4 +28,9 @@ data class User(
     @JoinColumn(name = "ROOM_ID")
     var room: Room? = null
 
-) : BaseTime()
+) : BaseTime() {
+
+    fun assignRoom(room: Room) {
+        this.room = room
+    }
+}

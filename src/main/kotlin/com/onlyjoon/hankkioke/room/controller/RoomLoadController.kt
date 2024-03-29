@@ -22,7 +22,7 @@ class RoomLoadController(
      */
     @GetMapping("/all")
     fun findAllRoom(
-        @PageableDefault(size = 10, sort = ["createAt"], direction = Sort.Direction.DESC) pageable: Pageable?
+        @PageableDefault(size = 10, sort = ["createAt"], direction = Sort.Direction.DESC) pageable: Pageable
     ) =
         ResponseEntity
             .status(HttpStatus.OK)
@@ -35,7 +35,7 @@ class RoomLoadController(
      */
     @GetMapping("/{roomId}")
     fun findRoomDetails(
-        @PathVariable("roomId") roomId: Long?
+        @PathVariable("roomId") roomId: Long
     ) =
         ResponseEntity
             .status(HttpStatus.OK)
