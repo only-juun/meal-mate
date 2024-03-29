@@ -35,9 +35,6 @@ data class Room (
     var restaurantLocation: String,
 
     @Column(nullable = false, length = 30)
-    var restaurantCategory: String,
-
-    @Column(nullable = false, length = 30)
     var restaurantLatitude: Double,
 
     @Column(nullable = false, length = 30)
