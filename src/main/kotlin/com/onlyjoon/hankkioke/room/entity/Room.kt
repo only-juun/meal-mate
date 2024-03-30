@@ -25,7 +25,7 @@ data class Room (
     var mealTime: LocalDateTime,
 
     @Column(nullable = false, length = 60)
-    var restaurantName: String?,
+    var restaurantName: String,
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -40,7 +40,7 @@ data class Room (
     @Column(nullable = false, length = 30)
     var restaurantLongitude: Double,
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 255)
     var locationUrl: String,
 
     @Column(nullable = true)

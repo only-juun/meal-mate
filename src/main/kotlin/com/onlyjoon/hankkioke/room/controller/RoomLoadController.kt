@@ -20,7 +20,7 @@ class RoomLoadController(
     /**
      * 전체 방 목록 조회
      */
-    @GetMapping("/all")
+    @GetMapping
     fun findAllRoom(
         @PageableDefault(size = 10, sort = ["createAt"], direction = Sort.Direction.DESC) pageable: Pageable
     ) =

@@ -1,13 +1,26 @@
 package com.onlyjoon.hankkioke.room.usecase.service
 
+import com.onlyjoon.hankkioke.room.dto.response.RoomDetailsResponse
+import com.onlyjoon.hankkioke.room.mapper.RoomMapper
+import com.onlyjoon.hankkioke.room.repository.RoomRepository
 import com.onlyjoon.hankkioke.room.usecase.RoomLoadUseCase
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
-class RoomLoadService : RoomLoadUseCase {
+@Transactional(readOnly = true)
+class RoomLoadService(
+    private val roomMapper: RoomMapper,
+    private val roomRepository: RoomRepository,
+) : RoomLoadUseCase {
     override fun findAllRooms(pageable: Pageable) = "allRooms"
-    override fun findRoomDetails(roomId: Long) = "roomDetails"
+
+    override fun findRoomDetails(roomId: Long): RoomDetailsResponse =
+        roomMapper.roomToRoomDetailsResponse(
+            roomRepository.findActiveRoomById(roomId)
+        )
+
     override fun getAttendeeList(roomId: Long) = "attendeeList"
 
 }

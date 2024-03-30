@@ -8,8 +8,8 @@ import com.onlyjoon.hankkioke.room.mapper.RoomMapper
 import com.onlyjoon.hankkioke.room.repository.RoomRepository
 import com.onlyjoon.hankkioke.room.usecase.RoomCreateUseCase
 import com.onlyjoon.hankkioke.user.repository.UserRepository
-import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 @Transactional
@@ -22,7 +22,7 @@ class RoomCreateService(
         // user 존재 검증 책임은 어디에서 갖는게 맞을까?
         val user = userRepository.findById(roomCreateCommand.userId)
             .orElseThrow { CustomException(ErrorCode.USER_NOT_FOUND) }
-        val room = roomMapper.toRoom(roomCreateCommand)
+        val room = roomMapper.roomCreateCommandToRoom(roomCreateCommand)
 
         user.assignRoom(room)
 
@@ -30,6 +30,6 @@ class RoomCreateService(
         // 수정해야 할 곳은 roomMapper, RoomCreateResponse 두 곳임
         // roomMapper 사용 또는 RoomCreateResponse companion object 사용
         // 둘 중 어떤 방법이 더 나을까?
-        return roomMapper.toResponse(roomRepository.save(room))
+        return roomMapper.roomToRoomCreateResponse(roomRepository.save(room))
     }
 }
