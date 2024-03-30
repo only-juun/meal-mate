@@ -9,6 +9,7 @@ enum class ErrorCode(
 ) {
 
     USER_NOT_FOUND(BAD_REQUEST, "해당하는 회원이 없습니다. 확인 후 다시 시도해주시기 바랍니다."),
+    ROOM_NOT_FOUND(BAD_REQUEST, "해당하는 방을 찾을 수 없습니다. 확인 후 다시 시도해주시기 바랍니다."),
     PASSWORD_INCORRECT(BAD_REQUEST, "비밀번호를 잘못 입력했습니다. 확인 후 다시 시도해주시기 바랍니다."),
     INVALID_TOKEN(BAD_REQUEST, "유효하지 않은 토큰입니다. 확인 후 다시 시도해주시기 바랍니다."),
     TERMS_NOT_AGREED(BAD_REQUEST, "필수 약관에 동의하지 않았습니다. 약관에 동의 후 다시 시도해주시기 바랍니다."),
