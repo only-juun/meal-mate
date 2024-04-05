@@ -12,21 +12,28 @@ data class User(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var userId: Long? = null,
 
-    @Column(length = 30, nullable = false)
+    @Column(length = 6, nullable = false)
     var name: String,
 
-    @Column(length = 30, nullable = false)
+    @Column(length = 12, nullable = false)
+    var nickname: String,
+
+    @Column(length = 320, nullable = false)
     var email: String,
 
-    @Column(length = 200, nullable = false)
-    var image: String,
+    @Column(nullable = false, columnDefinition = "TEXT")
+    var profileImage: String,
 
-    @Column(length = 30, nullable = true)
+    @Column
     var deletedAt: LocalDateTime? = null,
+
+//    @Column(nullable = false)
+//    @Enumerated(EnumType.STRING)
+//    var role: Role,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ROOM_ID")
-    var room: Room? = null
+    var room: Room? = null,
 
 ) : BaseTime() {
 

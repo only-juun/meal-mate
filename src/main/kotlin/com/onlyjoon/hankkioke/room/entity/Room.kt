@@ -12,10 +12,10 @@ data class Room (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
 
-    @Column(nullable = false, length = 20)
+    @Column(length = 20, nullable = false)
     var title: String,
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     var description: String,
 
     @Column(nullable = false)
@@ -24,30 +24,30 @@ data class Room (
     @Column(nullable = false)
     var mealTime: LocalDateTime,
 
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false)
     var restaurantName: String,
 
-    @Column(nullable = false)
+    @Column(length = 10, nullable = false)
     @Enumerated(EnumType.STRING)
     var category: Category,
 
     @Column(nullable = false)
     var restaurantLocation: String,
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false)
     var restaurantLatitude: Double,
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false)
     var restaurantLongitude: Double,
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false, columnDefinition = "TEXT")
     var locationUrl: String,
 
-    @Column(nullable = true)
+    @Column
     var deletedAt: LocalDateTime? = null,
 
-    @Column(nullable = true)
-    var closedAt: LocalDateTime? = null,
+    @Column
+    var closedYn: Boolean? = null,
 
     @OneToMany(mappedBy = "room")
     val users: List<User> = mutableListOf(),
