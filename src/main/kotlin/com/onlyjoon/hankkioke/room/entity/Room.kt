@@ -6,11 +6,11 @@ import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
-data class Room (
+data class Room(
     @Id
     @Column(name = "ROOM_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    var roomId: Long? = null,
 
     @Column(length = 20, nullable = false)
     var title: String,
@@ -52,4 +52,5 @@ data class Room (
     @OneToMany(mappedBy = "room")
     val users: List<User> = mutableListOf(),
 
-) : BaseTime()
+    ) : BaseTime()
+

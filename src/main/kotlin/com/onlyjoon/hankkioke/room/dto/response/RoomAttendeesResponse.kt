@@ -4,5 +4,5 @@ data class RoomAttendeesResponse (
     val userId: Long,
     val name: String,
     val email: String,
-    val image: String,
+    val profileImage: String,
 )

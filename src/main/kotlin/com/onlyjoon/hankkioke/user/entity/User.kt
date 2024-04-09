@@ -15,9 +15,6 @@ data class User(
     @Column(length = 6, nullable = false)
     var name: String,
 
-    @Column(length = 12, nullable = false)
-    var nickname: String,
-
     @Column(length = 320, nullable = false)
     var email: String,
 
@@ -35,7 +32,7 @@ data class User(
     @JoinColumn(name = "ROOM_ID")
     var room: Room? = null,
 
-) : BaseTime() {
+    ) : BaseTime() {
 
     fun assignRoom(room: Room) {
         this.room = room

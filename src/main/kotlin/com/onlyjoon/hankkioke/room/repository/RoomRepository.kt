@@ -11,7 +11,7 @@ interface RoomRepository : JpaRepository<Room, Long> {
     @Query( "SELECT r " +
             "FROM Room r " +
             "WHERE 1 = 1 " +
-            "AND r.id = :roomId " +
+            "AND r.roomId = :roomId " +
             "AND r.deletedAt IS NULL ")
     fun findActiveRoomById(roomId: Long): Room
 
