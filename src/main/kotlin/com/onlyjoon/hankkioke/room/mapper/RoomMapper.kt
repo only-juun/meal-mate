@@ -25,12 +25,12 @@ class RoomMapper {
     )
 
     fun roomToRoomCreateResponse(room: Room) = RoomCreateResponse(
-        roomId = room.id ?: throw CustomException(ErrorCode.DATABASE_ERROR),
+        roomId = room.roomId ?: throw CustomException(ErrorCode.DATABASE_ERROR),
         title = room.title,
     )
 
     fun roomToRoomDetailsResponse(room: Room) = RoomDetailsResponse(
-        roomId = room.id ?: throw CustomException(ErrorCode.ROOM_NOT_FOUND),
+        roomId = room.roomId ?: throw CustomException(ErrorCode.ROOM_NOT_FOUND),
         title = room.title,
         description = room.description,
         mealTime = room.mealTime,
@@ -46,7 +46,7 @@ class RoomMapper {
                 userId = user.userId ?: throw CustomException(ErrorCode.USER_NOT_FOUND),
                 name = user.name,
                 email = user.email,
-                image = user.image
+                profileImage = user.profileImage
             )
         }
     )
