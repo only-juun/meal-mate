@@ -13,6 +13,6 @@ interface RoomRepository : JpaRepository<Room, Long> {
             "WHERE 1 = 1 " +
             "AND r.roomId = :roomId " +
             "AND r.deletedAt IS NULL ")
-    fun findActiveRoomById(roomId: Long): Room
+    fun findActiveRoomById(roomId: Long): Room?
 
 }
