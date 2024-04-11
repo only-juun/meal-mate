@@ -5,9 +5,9 @@ import com.onlyjoon.hankkioke.common.exception.ErrorCode
 import com.onlyjoon.hankkioke.room.repository.RoomRepository
 import com.onlyjoon.hankkioke.room.usecase.RoomLeaveUseCase
 import com.onlyjoon.hankkioke.user.repository.UserRepository
-import jakarta.transaction.Transactional
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 @Transactional
