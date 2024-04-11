@@ -18,12 +18,13 @@ class RoomCreateService(
     private val roomRepository: RoomRepository,
     private val userRepository: UserRepository
 ) : RoomCreateUseCase {
+
     override fun createRoom(roomCreateCommand: RoomCreateCommand): RoomCreateResponse {
         val user = userRepository.findById(roomCreateCommand.userId)
             .orElseThrow { CustomException(ErrorCode.USER_NOT_FOUND) }
         val room = roomMapper.roomCreateCommandToRoom(roomCreateCommand)
 
-        user.assignRoom(room)
+        user.createRoom(room)
 
         return roomMapper.roomToRoomCreateResponse(roomRepository.save(room))
     }

@@ -52,5 +52,19 @@ data class Room(
     @OneToMany(mappedBy = "room")
     val users: List<User> = mutableListOf(),
 
-    ) : BaseTime()
+    ) : BaseTime() {
+
+    fun deleteRoom() {
+        this.deletedAt = LocalDateTime.now()
+        this.closedYn = true
+    }
+
+    fun assignNextLeader(userId: Long) {
+        this.users.filter { it.userId != userId }
+            .minByOrNull { it.joinedAt ?: LocalDateTime.MAX }
+            ?.let { nextLeader ->
+                nextLeader.isRoomLeader = true
+            }
+    }
+}
 

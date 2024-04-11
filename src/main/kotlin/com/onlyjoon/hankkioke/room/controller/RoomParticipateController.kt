@@ -19,8 +19,8 @@ class RoomParticipateController(
      */
     @PostMapping("/{roomId}/participants/{userId}")
     fun participateRoom(
-        @PathVariable("roomId") roomId: Long?,
-        @PathVariable("userId") userId: Long?,
+        @PathVariable("roomId") roomId: Long,
+        @PathVariable("userId") userId: Long,
     ) =
         ResponseEntity
             .status(HttpStatus.OK)

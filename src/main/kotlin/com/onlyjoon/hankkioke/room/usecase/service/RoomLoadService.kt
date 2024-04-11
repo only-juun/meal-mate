@@ -1,5 +1,7 @@
 package com.onlyjoon.hankkioke.room.usecase.service
 
+import com.onlyjoon.hankkioke.common.exception.CustomException
+import com.onlyjoon.hankkioke.common.exception.ErrorCode
 import com.onlyjoon.hankkioke.room.dto.response.RoomDetailsResponse
 import com.onlyjoon.hankkioke.room.mapper.RoomMapper
 import com.onlyjoon.hankkioke.room.repository.RoomRepository
@@ -19,6 +21,7 @@ class RoomLoadService(
     override fun findRoomDetails(roomId: Long): RoomDetailsResponse =
         roomMapper.roomToRoomDetailsResponse(
             roomRepository.findActiveRoomById(roomId)
+                ?: throw CustomException(ErrorCode.ROOM_NOT_FOUND)
         )
 
     override fun getAttendeeList(roomId: Long) = "attendeeList"
