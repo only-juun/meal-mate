@@ -4,6 +4,6 @@ import org.springframework.stereotype.Service
 
 @Service
 interface RoomLeaveUseCase {
-    fun leaveRoom(roomId: Long, userId: Long): String
+    fun leaveRoom(roomId: Long, userId: Long)
 
 }

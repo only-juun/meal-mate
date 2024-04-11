@@ -24,6 +24,12 @@ data class User(
     @Column
     var deletedAt: LocalDateTime? = null,
 
+    @Column(nullable = true)
+    var joinedAt: LocalDateTime? = null,
+
+    @Column(nullable = false)
+    var isRoomLeader: Boolean = false,
+
 //    @Column(nullable = false)
 //    @Enumerated(EnumType.STRING)
 //    var role: Role,
@@ -34,7 +40,22 @@ data class User(
 
     ) : BaseTime() {
 
-    fun assignRoom(room: Room) {
+    fun createRoom(room: Room) {
         this.room = room
+        this.joinedAt = LocalDateTime.now()
+        this.isRoomLeader = true
+    }
+
+    fun joinRoom(room: Room) {
+        this.room = room
+        this.joinedAt = LocalDateTime.now()
+    }
+
+    fun leaveRoom() {
+        this.room = null
+    }
+
+    fun revokeLeadership() {
+        this.isRoomLeader = false
     }
 }
