@@ -41,3 +41,7 @@ out/
 
 ### Mac ###
 **/.DS_Store
+
+### Yml ###
+**/application.yml
+**/bootstrap.yml
