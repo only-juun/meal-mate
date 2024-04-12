@@ -10,18 +10,23 @@ import com.onlyjoon.hankkioke.user.dto.response.UserResourceResponse
 import com.onlyjoon.hankkioke.user.repository.UserRepository
 import com.onlyjoon.hankkioke.user.usecase.UserLoginUseCase
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.client.RestClient
 import org.springframework.web.client.toEntity
 import java.util.regex.Pattern
 
 @Service
+@Transactional
 class UserLoginService(
+    private val jwtUtil: JwtUtil,
     private val restClient: RestClient,
     private val properties: OAuthProperties,
     private val objectMapper: ObjectMapper,
     private val userRepository: UserRepository,
-    private val jwtUtil: JwtUtil,
-) : UserLoginUseCase{
+) : UserLoginUseCase {
+    /**
+     * 소셜 로그인
+     */
     override fun socialLogin(code: String, registrationId: String): String {
         val authorization = getAuthorization(code)
         val userResource = getUserResource(authorization)
@@ -44,8 +49,8 @@ class UserLoginService(
         val response = restClient.get()
             .uri(properties.resourceUri)
             .header(
-                "Authorization" ,authorization
-                )
+                "Authorization", authorization
+            )
             .retrieve()
             .toEntity<JsonNode>()
 

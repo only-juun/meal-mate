@@ -21,7 +21,8 @@ class UserLoginController(
     @GetMapping("/code/{registrationId}")
     fun googleLogin(
         @RequestParam code: String,
-        @PathVariable registrationId: String) =
+        @PathVariable("registrationId") registrationId: String
+    ) =
         ResponseEntity
             .status(HttpStatus.OK)
             .body(

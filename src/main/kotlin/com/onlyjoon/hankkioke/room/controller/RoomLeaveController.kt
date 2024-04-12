@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RestController
 class RoomLeaveController(
     private val roomLeaveUseCase: RoomLeaveUseCase,
 ) {
-
+    /**
+     * 방 나가기
+     */
     @PatchMapping("/{roomId}/participants/{userId}")
     fun removeUserFromRoom(
-        @PathVariable roomId: Long,
-        @PathVariable userId: Long
+        @PathVariable("roomId") roomId: Long,
+        @PathVariable("userId") userId: Long,
     ) =
         ResponseEntity
             .status(HttpStatus.OK)

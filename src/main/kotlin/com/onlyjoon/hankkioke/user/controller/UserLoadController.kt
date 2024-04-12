@@ -18,7 +18,9 @@ class UserLoadController(
      * 사용자 정보 조회
      */
     @GetMapping("/{userId}")
-    fun loadUserName(@PathVariable(name = "userId") userId: Long) =
+    fun loadUserName(
+        @PathVariable("userId") userId: Long,
+    ) =
         ResponseEntity
             .status(HttpStatus.OK)
             .body(

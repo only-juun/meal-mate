@@ -18,11 +18,11 @@ class RoomLoadController(
     private val roomLoadUseCase: RoomLoadUseCase,
 ) {
     /**
-     * 전체 방 목록 조회
+     * 방 전체 목록 조회
      */
     @GetMapping
     fun findAllRoom(
-        @PageableDefault(size = 10, sort = ["createAt"], direction = Sort.Direction.DESC) pageable: Pageable
+        @PageableDefault(size = 10, sort = ["createAt"], direction = Sort.Direction.DESC) pageable: Pageable,
     ) =
         ResponseEntity
             .status(HttpStatus.OK)
@@ -35,7 +35,7 @@ class RoomLoadController(
      */
     @GetMapping("/{roomId}")
     fun findRoomDetails(
-        @PathVariable("roomId") roomId: Long
+        @PathVariable("roomId") roomId: Long,
     ) =
         ResponseEntity
             .status(HttpStatus.OK)
@@ -47,7 +47,9 @@ class RoomLoadController(
      * 방 참가자 목록 조회: 방 상세 조회와 통합 예정
      */
     @GetMapping("/{roomId}/users")
-    fun getAttendeeList(@PathVariable("roomId") roomId: Long) =
+    fun getAttendeeList(
+        @PathVariable("roomId") roomId: Long,
+    ) =
         ResponseEntity
             .status(HttpStatus.OK)
             .body(
