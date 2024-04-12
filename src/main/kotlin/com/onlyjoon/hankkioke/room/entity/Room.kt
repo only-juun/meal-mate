@@ -46,8 +46,8 @@ data class Room(
     @Column
     var deletedAt: LocalDateTime? = null,
 
-    @Column
-    var closedYn: Boolean? = null,
+    @Column(nullable = false)
+    var closedYn: Boolean = false,
 
     @OneToMany(mappedBy = "room")
     val users: List<User> = mutableListOf(),
